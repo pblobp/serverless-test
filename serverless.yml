@@ -14,7 +14,9 @@
 service: http-handler # NOTE: update this with your service name
 
 plugins:
- - serverless-apigw-binary
+  - serverless-apigw-binary
+  - serverless-offline
+
 
 custom:
   apigwBinary:
