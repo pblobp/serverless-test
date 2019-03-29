@@ -11,11 +11,13 @@
   "license": "ISC",
   "devDependencies": {
     "aws-sdk": "^2.431.0",
+    "eslint": "^5.15.3",
     "serverless": "^1.40.0",
     "serverless-apigw-binary": "^0.4.4",
     "serverless-offline": "^4.9.2"
   },
   "dependencies": {
+    "jimp": "^0.6.1",
     "uuid": "^3.3.2"
   }
 }

@@ -1,25 +1,15 @@
 const AWS = require("aws-sdk");
-const uuid = require("uuid/v4");
-
 const S3 = new AWS.S3();
-const BUCKET = "launchlab-lambda";
 
-const upload = async function(body) {
-  const id = uuid() + ".jpg";
-  await S3.putObject({
-    Bucket: BUCKET,
-    Key: id,
-    Body: new Buffer(body.replace(/^data:image\/\w+;base64,/, ""), "base64"),
-    ContentEncoding: "base64",
-    ContentType: "image/jpeg"
-  }).promise();
-  console.log("data > ", body);
-  return {
-    bucket: BUCKET,
-    key: id
-  };
+const putObject = async function(object) {
+  return S3.putObject(object).promise();
+};
+
+const getObject = async function(object) {
+  return S3.getObject(object).promise();
 };
 
 module.exports = {
-  upload
+  putObject,
+  getObject
 };

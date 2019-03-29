@@ -1,38 +1,29 @@
-# Welcome to Serverless!
-#
-# This file is the main config file for your service.
-# It's very minimal at this point and uses default values.
-# You can always add more config options for more control.
-# We've included some commented out config examples here.
-# Just uncomment any of them to get that config option.
-#
-# For full config options, check the docs:
-#    docs.serverless.com
-#
-# Happy Coding!
-
-service: http-handler # NOTE: update this with your service name
+service: http-handler
 
 plugins:
   - serverless-apigw-binary
   - serverless-offline
-
 
 custom:
   apigwBinary:
     types:
       - 'image/jpeg'
 
-
 provider:
   name: aws
   runtime: nodejs8.10
 
 functions:
-  hello:
-    handler: handler.upload
+  uploadImage:
+    handler: handler.uploadImage
     role: arn:aws:iam::845275448803:role/lambda-http-handler
     events:
       - http:
           path: images
           method: post
+
+  generateThumbnail:
+    handler: handler.generateThumbnail
+    role: arn:aws:iam::845275448803:role/lambda-http-handler
+    events:
+      - sns: arn:aws:sns:us-east-1:845275448803:s3-images-put-topic

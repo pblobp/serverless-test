@@ -1,16 +1,9 @@
 const AWS = require("aws-sdk");
-
 const dynamodb = new AWS.DynamoDB.DocumentClient();
-const TABLE = "images";
+const { tables } = require("../infra/config");
 
 const put = async function(item) {
-  return dynamodb.put({
-      TableName: TABLE,
-      Item: {
-        id: item.key,
-        bucket: item.bucket
-      }
-    }).promise();
+  return dynamodb.put({ TableName: tables.images, Item: item }).promise();
 };
 
 module.exports = {
