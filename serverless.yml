@@ -27,3 +27,9 @@ functions:
     role: arn:aws:iam::845275448803:role/lambda-http-handler
     events:
       - sns: arn:aws:sns:us-east-1:845275448803:s3-images-put-topic
+
+  filterImage:
+    handler: handler.filterImage
+    role: arn:aws:iam::845275448803:role/lambda-http-handler
+    events:
+      - sns: arn:aws:sns:us-east-1:845275448803:s3-images-put-topic

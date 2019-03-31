@@ -1,6 +1,7 @@
 const buckets = {
-    images: process.env.BUCKET_IMAGES || "serverless-bucket-images",
-    thumbnails: process.env.BUCKET_THUMBNAILS || "serverless-bucket-thumbnails"
+    images: "serverless-bucket-images",
+    thumbnails: "serverless-bucket-thumbnails",
+    filteredImages: "serverless-bucket-filtered-images",
 };
 const tables = {
     images: "images"
